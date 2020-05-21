@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">betterfin-test</string>
+    <string name="title_activity_main">betterfin-test</string>
+    <string name="package_name">com.betterfin.test</string>
+    <string name="custom_url_scheme">com.betterfin.test</string>
+</resources>
