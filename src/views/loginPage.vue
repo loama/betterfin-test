@@ -152,6 +152,7 @@ export default {
       width: 104px
 
     h2
+      font-family: 'Apercu-Bold'
       margin-bottom: 48px
 
     .input
@@ -170,6 +171,7 @@ export default {
         outline: none
         padding: 0 12px
         width: 280px
+        -webkit-appearance: none
 
         &:focus
           border: 1px solid var(--stroke-darkened)
@@ -183,6 +185,7 @@ export default {
       height: 44px
       outline: none
       width: 308px
+      -webkit-appearance: none
 
     .twoFactor
       background: var(--white)

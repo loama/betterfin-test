@@ -141,6 +141,7 @@ export default {
 
   .head
     background: var(--almost-white)
+    font-family: 'Apercu-Bold'
     height: 44px
     left: 12px
 

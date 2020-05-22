@@ -85,7 +85,7 @@ export default {
     var self = this
     axios({
       method: 'get',
-      url: '/data.json'
+      url: 'https://us-central1-betterfin-test.cloudfunctions.net/helloWorld'
     })
       .then((response) => {
         self.$store.commit('saveJsonData', response.data)
@@ -114,14 +114,24 @@ html, body
   --white: #FFF
   --almost-white: #FAF9F7
 
+@font-face
+  font-family: 'Apercu-Light'
+  src: url('./assets/Apercu-Light.otf')
+
+@font-face
+  font-family: 'Apercu-Bold'
+  src: url('./assets/Apercu-Bold.otf')
+
 #app
   color: var(--text-dark)
+  font-family: 'Apercu-Light'
   padding-top: 56px
 
   #navbar
     background: #FFF
     box-shadow: 1px 0 10px 0 rgba(89,98,115,.2)
     height: 48px
+    height: calc(48px + env(safe-area-inset-top))
     left: 0
     position: fixed
     top: 0
@@ -130,7 +140,7 @@ html, body
 
     .logo
       display: block
-      margin: 12px auto
+      margin: calc(12px + env(safe-area-inset-top)) auto 12px auto
       width: 104px
 
     .account
@@ -138,6 +148,7 @@ html, body
       position: absolute
       right: 12px
       top: 8px
+      top: calc(8px + env(safe-area-inset-top))
       width: 40px
 
     .settings
@@ -145,11 +156,13 @@ html, body
       left: 12px
       position: absolute
       top: 12px
+      top: calc(12px + env(safe-area-inset-top))
 
   #topbar
     height: 44px
     margin-bottom: 16px
     margin-top: 16px
+    margin-top: calc(16px + env(safe-area-inset-top))
     position: relative
     width: 100vw
 
@@ -163,6 +176,7 @@ html, body
       position: absolute
       top: 0
       width: 288px
+      -webkit-appearance: none
 
       &:focus
         border: 1px solid var(--stroke-darkened)

@@ -205,6 +205,7 @@ export default {
         width: calc(100% - 80px)
 
         .title
+          font-family: 'Apercu-Bold'
           font-size: 16px
           margin-top: 24px
           overflow: hidden
@@ -213,6 +214,7 @@ export default {
           white-space: nowrap
 
         .amount
+          font-family: 'Apercu-Bold'
           position: absolute
           right: 12px
           top: 24px

@@ -32,7 +32,7 @@ async function createWindow () {
   // Define our main window size
   mainWindow = new BrowserWindow({
     height: 920,
-    width: 1600,
+    width: 1200,
     show: false,
     webPreferences: {
       nodeIntegration: true,
@@ -47,7 +47,7 @@ async function createWindow () {
     // Set our above template to the Menu Object if we are in development mode, dont want users having the devtools.
     Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplateDev));
     // If we are developers we might as well open the devtools by default.
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
 
   if(useSplashScreen) {
