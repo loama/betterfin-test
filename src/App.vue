@@ -16,24 +16,34 @@
     <loginPage />
 
     <modalOverlay />
+
+    <accountModal />
+    <settingsModal />
+    <transactionModal />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
+import accountModal from './views/accountModal.vue'
 import filters from './views/filters.vue'
 import loginPage from './views/loginPage.vue'
 import modalOverlay from './views/modalOverlay.vue'
+import settingsModal from './views/settingsModal.vue'
 import transactionsList from './views/transactionsList.vue'
+import transactionModal from './views/transactionModal.vue'
 import transactionsTable from './views/transactionsTable.vue'
 
 export default {
   components: {
+    accountModal: accountModal,
     filters: filters,
     loginPage: loginPage,
     modalOverlay: modalOverlay,
+    settingsModal: settingsModal,
     transactionsList: transactionsList,
+    transactionModal: transactionModal,
     transactionsTable: transactionsTable
   },
   computed: {
@@ -116,7 +126,7 @@ html, body
     input.search
       box-sizing: border-box
       height: 44px
-      left: calc(50vw - 152px)
+      left: calc(50vw - 144px)
       outline: none
       padding: 8px
       position: absolute

@@ -15,9 +15,11 @@
           v-bind:key="transaction.id">
 
           <div class="merchant">
-            <span v-if="transaction.merchant">
-              {{transaction.merchant.name}}.
-            </span>
+            <div v-if="transaction.merchant">
+              <span v-if="transaction.merchant.name !== 'empty'">
+                {{transaction.merchant.name}}
+              </span>
+            </div>
             <span v-else=""> - </span>
           </div>
           <div class="amount">${{transaction.amount.amount.toFixed(2)}}</div>
