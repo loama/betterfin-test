@@ -41,6 +41,8 @@ export default {
 
 <style lang="sass" scoped>
 #filters
+  background: var(--almost-white)
+
   .view
     border: 1px solid var(--stroke)
     border-radius: 2px
@@ -48,14 +50,17 @@ export default {
     width: 100%
 
     .indicator
-      background: red
+      background: var(--white)
+      border: 1px solid var(--stroke)
       border-radius: 2px
       height: 44px
+      left: 0
       pointer-events: none
       position: absolute
+      top: 0
       transition: all 0.3s
       width: 100px
-      z-index: -1
+      z-index: 0
 
       &.table
         transform: translate3d(100px, 0, 0)
@@ -65,7 +70,9 @@ export default {
       display: inline-block
       height: 44px
       line-height: 44px
+      position: relative
       text-align: center
       width: 50%
+      z-index: 2
 
 </style>
