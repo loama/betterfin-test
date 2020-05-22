@@ -44,13 +44,13 @@ export default {
   .view
     border: 1px solid var(--stroke)
     border-radius: 2px
-    height: 32px
+    height: 44px
     width: 100%
 
     .indicator
       background: red
       border-radius: 2px
-      height: 32px
+      height: 44px
       pointer-events: none
       position: absolute
       transition: all 0.3s
@@ -63,8 +63,8 @@ export default {
     .option
       cursor: pointer
       display: inline-block
-      height: 32px
-      line-height: 32px
+      height: 44px
+      line-height: 44px
       text-align: center
       width: 50%
 
