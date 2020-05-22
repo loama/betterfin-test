@@ -65,7 +65,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 This project contains:
 
 - Capacitor Project with vuejs
-  - webapp
+  - [webapp](https://betterfin-test.web.app/?view=list)
   - electron desktop app
   - ios app
   - android app
