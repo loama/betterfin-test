@@ -8,10 +8,10 @@
 
     <div id="topbar">
       <input class="search" v-model="searchQuery" v-on:keyup="search()" placeholder="Search ...">
-      <div class="filters-button">
+      <div class="filters-button" v-on:click="toggleFilters()">
         <img src="./assets/filter.svg">
       </div>
-      <filters />
+      <filters v-bind:class="{open: filtersOpen}"/>
     </div>
 
     <transactionsList v-show="view === 'list'"/>
@@ -60,7 +60,8 @@ export default {
   },
   data () {
     return {
-      searchQuery: ''
+      searchQuery: '',
+      filtersOpen: false
     }
   },
   methods: {
@@ -75,6 +76,9 @@ export default {
     },
     search () {
       this.$store.commit('search', this.searchQuery)
+    },
+    toggleFilters () {
+      this.filtersOpen = !this.filtersOpen
     }
   },
   mounted () {
@@ -177,9 +181,20 @@ html, body
         width: 24px
 
     #filters
+      background: var(--white)
       min-height: 44px
       position: absolute
-      right: 12px
+      right: -200px
       top: 60px
+      transition: all 0.3s
       width: 200px
+      z-index: 10
+
+      &.open
+        transform: translate3d(-212px, 0, 0)
+
+@media (min-width: 1024px)
+  #app
+    #filters
+      transform: translate3d(-212px, 0, 0)
 </style>

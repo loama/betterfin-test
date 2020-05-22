@@ -14,7 +14,8 @@
       </li>
 
       <li v-for="transaction in transactions"
-          v-bind:key="transaction.id">
+          v-bind:key="transaction.id"
+          v-on:click="openTransaction(transaction.id)">
 
           <div class="merchant">
             <div v-if="transaction.merchant">
@@ -113,6 +114,18 @@ export default {
       }
 
       return ordered
+    }
+  },
+  methods: {
+    openTransaction (id) {
+      this.$router.push({
+        query: {
+          view: this.$route.query.view,
+          orderBy: this.$route.query.orderBy,
+          modal: 'transaction',
+          id: id
+        }
+      })
     }
   }
 }

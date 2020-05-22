@@ -218,6 +218,8 @@ export default {
             color: var(--white)
 
   #loginImage
+    display: none
+
     h2
       margin: 120px 10% 24px 10%
 
