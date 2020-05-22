@@ -4,8 +4,15 @@
       <img class="logo" src="./assets/logo.svg">
     </div>
 
-    {{accounts}}
-    <transactions />
+    <div id="topbar">
+      <input class="search">
+      <div class="filters-button"></div>
+      <filters />
+    </div>
+
+    <transactionsList v-show="view === 'list'"/>
+    <transactionsTable v-show="view === 'table'"/>
+
     <loginPage />
   </div>
 </template>
@@ -13,17 +20,24 @@
 <script>
 import axios from 'axios'
 
+import filters from './views/filters.vue'
 import loginPage from './views/loginPage.vue'
-import transactions from './views/transactions.vue'
+import transactionsList from './views/transactionsList.vue'
+import transactionsTable from './views/transactionsTable.vue'
 
 export default {
   components: {
+    filters: filters,
     loginPage: loginPage,
-    transactions: transactions
+    transactionsList: transactionsList,
+    transactionsTable: transactionsTable
   },
   computed: {
     accounts () {
       return this.$store.state.accounts
+    },
+    view () {
+      return this.$route.query.view
     }
   },
   mounted () {
@@ -64,7 +78,7 @@ html, body
 
   #navbar
     background: #FFF
-    box-shadow: 1px 0 10px #596273
+    box-shadow: 1px 0 10px 0 rgba(89,98,115,.2)
     height: 48px
     left: 0
     position: fixed
@@ -75,4 +89,37 @@ html, body
       display: block
       margin: 12px auto
       width: 104px
+
+  #topbar
+    height: 44px
+    margin-bottom: 16px
+    margin-top: 16px
+    position: relative
+    width: 100vw
+
+    input.search
+      box-sizing: border-box
+      height: 44px
+      left: calc(50vw - 152px)
+      outline: none
+      padding: 8px
+      position: absolute
+      top: 0
+      width: 288px
+
+    .filters-button
+      border: 1px solid var(--stroke)
+      display: inline-block
+      height: 44px
+      position: absolute
+      right: 12px
+      top: 0
+      width: 44px
+
+    #filters
+      min-height: 44px
+      position: absolute
+      right: 12px
+      top: 60px
+      width: 200px
 </style>
