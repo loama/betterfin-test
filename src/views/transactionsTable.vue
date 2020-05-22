@@ -39,7 +39,75 @@
 export default {
   computed: {
     transactions () {
-      return this.$store.state.trxs_results
+      var transactions = this.$store.state.trxs_results
+      var ordered = []
+      Object.assign(ordered, transactions)
+
+      switch (this.$route.query.orderBy) {
+        case 'amount':
+          ordered.sort(function (a, b) {
+            return a.amount.amount - b.amount.amount
+          })
+          break
+
+        case 'merchant':
+          ordered.sort(function (a, b) {
+            if (a.merchant === undefined) {
+              a.merchant = {
+                name: 'empty'
+              }
+            }
+
+            if (b.merchant === undefined) {
+              b.merchant = {
+                name: 'empty'
+              }
+            }
+
+            if (a.merchant.name === undefined) {
+              a.merchant.name = 'empty'
+            }
+
+            if (b.merchant.name === undefined) {
+              b.merchant.name = 'empty'
+            }
+
+            if (a.merchant.name < b.merchant.name) {
+              return -1
+            } if (a.merchant.name > b.merchant.name) {
+              return 1
+            }
+            return 0
+          })
+          break
+
+        case 'category':
+          ordered.sort(function (a, b) {
+            if (a.type.replace('_', '') < b.type.replace('_', '')) {
+              return -1
+            } if (a.type.replace('_', '') > b.type.replace('_', '')) {
+              return 1
+            }
+            return 0
+          })
+          break
+
+        case 'description':
+          ordered.sort(function (a, b) {
+            if (a.description.simple > b.description.simple) {
+              return 1
+            } if (a.description.simple < b.description.simple) {
+              return -1
+            }
+            return 0
+          })
+          break
+
+        default:
+          // do nothing
+      }
+
+      return ordered
     }
   }
 }

@@ -14,6 +14,8 @@
     <transactionsTable v-show="view === 'table'"/>
 
     <loginPage />
+
+    <modalOverlay />
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import axios from 'axios'
 
 import filters from './views/filters.vue'
 import loginPage from './views/loginPage.vue'
+import modalOverlay from './views/modalOverlay.vue'
 import transactionsList from './views/transactionsList.vue'
 import transactionsTable from './views/transactionsTable.vue'
 
@@ -29,6 +32,7 @@ export default {
   components: {
     filters: filters,
     loginPage: loginPage,
+    modalOverlay: modalOverlay,
     transactionsList: transactionsList,
     transactionsTable: transactionsTable
   },
@@ -58,6 +62,7 @@ export default {
     })
       .then((response) => {
         self.$store.commit('saveJsonData', response.data)
+        self.$store.commit('search', '')
       })
   }
 }

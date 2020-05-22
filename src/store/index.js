@@ -8,7 +8,7 @@ export default new Vuex.Store({
     accounts: {},
     balances: [],
     trxs: {},
-    trxs_results: {},
+    trxs_results: [],
     trxs_count: {},
     // UI
     loginPage: {
@@ -35,7 +35,6 @@ export default new Vuex.Store({
       query = query.toLowerCase()
 
       const transactions = Object.values(state.trxs.transaction)
-      console.log(transactions)
       const results = []
       for (let i = 0; i < transactions.length; i++) {
         let inMerchant = false

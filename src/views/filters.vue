@@ -11,6 +11,45 @@
            v-bind:class="{active: view === 'table'}"
            v-on:click="changeView('table')">table</div>
     </div>
+
+    <div class="order">
+      <div class="title"> Order By </div>
+
+      <div class="option"
+           v-bind:class="{active: orderBy === 'merchant'}"
+           v-on:click="orderByOption('merchant')">
+        <div class="radio"></div>
+        merchant
+      </div>
+
+      <div class="option"
+           v-bind:class="{active: orderBy === 'amount'}"
+           v-on:click="orderByOption('amount')">
+        <div class="radio"></div>
+        amount
+      </div>
+
+      <div class="option"
+           v-bind:class="{active: orderBy === 'category'}"
+           v-on:click="orderByOption('category')">
+        <div class="radio"></div>
+        category
+      </div>
+
+      <div class="option"
+           v-bind:class="{active: orderBy === 'description'}"
+           v-on:click="orderByOption('description')">
+        <div class="radio"></div>
+        description
+      </div>
+
+      <div class="option"
+           v-bind:class="{active: orderBy === 'date'}"
+           v-on:click="orderByOption('date')">
+        <div class="radio"></div>
+        date
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,6 +62,7 @@ export default {
   },
   data () {
     return {
+      orderBy: 'date'
     }
   },
   methods: {
@@ -34,6 +74,23 @@ export default {
           }
         })
       }
+    },
+    orderByOption (option) {
+      this.orderBy = option
+      var currentQuery = this.$route.query
+      console.log(currentQuery)
+
+      this.$router.push({
+        query: {
+          orderBy: option,
+          view: currentQuery.view
+        }
+      })
+    }
+  },
+  mounted () {
+    if (this.$route.query.view === undefined) {
+      this.changeView('list')
     }
   }
 }
@@ -41,9 +98,9 @@ export default {
 
 <style lang="sass" scoped>
 #filters
-  background: var(--almost-white)
 
   .view
+    background: var(--almost-white)
     border: 1px solid var(--stroke)
     border-radius: 2px
     height: 44px
@@ -74,5 +131,32 @@ export default {
       text-align: center
       width: 50%
       z-index: 2
+
+  .order
+    border: 1px solid var(--stroke)
+    margin-top: 16px
+
+    .title
+      padding: 8px
+
+    .option
+      cursor: pointer
+      height: 44px
+      line-height: 44px
+      padding: 0 8px
+
+      .radio
+        border: 1px solid var(--stroke)
+        border-radius: 50%
+        display: inline-block
+        height: 12px
+        margin-right: 8px
+        margin-top: 16px
+        vertical-align: top
+        width: 12px
+
+      &.active
+        .radio
+          background: var(--primary)
 
 </style>
