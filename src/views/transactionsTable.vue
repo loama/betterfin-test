@@ -39,7 +39,7 @@
 export default {
   computed: {
     transactions () {
-      return this.$store.state.trxs.transaction
+      return this.$store.state.trxs_results
     }
   }
 }

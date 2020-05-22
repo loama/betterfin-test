@@ -8,6 +8,7 @@ export default new Vuex.Store({
     accounts: {},
     balances: [],
     trxs: {},
+    trxs_results: {},
     trxs_count: {},
     // UI
     loginPage: {
@@ -29,6 +30,28 @@ export default new Vuex.Store({
       state.balances = payload.balances
       state.trxs = payload.trxs
       state.trxs_count = payload.trxs_count
+    },
+    search (state, query) {
+      query = query.toLowerCase()
+
+      const transactions = Object.values(state.trxs.transaction)
+      console.log(transactions)
+      const results = []
+      for (let i = 0; i < transactions.length; i++) {
+        let inMerchant = false
+        if (transactions[i].merchant && transactions[i].merchant.name) {
+          inMerchant = transactions[i].merchant.name.toLowerCase().includes(query)
+        }
+
+        const inDescription = transactions[i].description.simple.toLowerCase().includes(query)
+        const inType = transactions[i].type.replace('_', '').toLowerCase().includes(query)
+
+        if (inMerchant || inDescription || inType) {
+          results.push(transactions[i])
+        }
+      }
+
+      state.trxs_results = results
     }
   },
   actions: {

@@ -6,12 +6,12 @@
 
       <div class="input">
         <div class="placeholder"></div>
-        <input type="email">
+        <input type="email" placeholder="mail@example.com">
       </div>
 
       <div class="input">
         <div class="placeholder"></div>
-        <input type="password">
+        <input type="password" placeholder="password">
       </div>
 
       <input type="submit" value="Login">

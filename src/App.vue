@@ -5,7 +5,7 @@
     </div>
 
     <div id="topbar">
-      <input class="search">
+      <input class="search" v-model="searchQuery" v-on:keyup="search()" placeholder="Search ...">
       <div class="filters-button"></div>
       <filters />
     </div>
@@ -38,6 +38,16 @@ export default {
     },
     view () {
       return this.$route.query.view
+    }
+  },
+  data () {
+    return {
+      searchQuery: ''
+    }
+  },
+  methods: {
+    search () {
+      this.$store.commit('search', this.searchQuery)
     }
   },
   mounted () {

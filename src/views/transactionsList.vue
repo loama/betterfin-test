@@ -18,7 +18,7 @@
             </div>
           </div>
 
-          <div class="transaction-type">
+          <div class="transaction-type" v-bind:class="transaction.baseType">
             {{transaction.baseType}}
           </div>
         </div>
@@ -64,7 +64,7 @@
 export default {
   computed: {
     transactions () {
-      return this.$store.state.trxs.transaction
+      return this.$store.state.trxs_results
     }
   }
 }
@@ -85,6 +85,10 @@ export default {
       height: 80px
       position: relative
 
+      &:hover
+        background: var(--almost-white)
+        cursor: pointer
+
       .visual
         display: inline-block
         height: 80px
@@ -100,7 +104,7 @@ export default {
           width: 56px
 
         .transaction-type
-          background: blue
+          background: var(--secondary)
           border-radius: 4px
           color: #FFF
           font-size: 12px
@@ -108,6 +112,9 @@ export default {
           position: absolute
           right: 4px
           top: 50px
+
+          &.CREDIT
+            background: var(--primary)
 
       .content
         display: inline-block
