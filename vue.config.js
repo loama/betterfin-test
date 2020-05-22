@@ -6,7 +6,7 @@ module.exports = {
       {
         apply: (compiler) => {
           compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
-            console.log('2')
+            // console.log('2')
             // exec('node copyToElectron.js')
             /* exec('', (err, stdout, stderr) => {
               if (stdout) process.stdout.write(stdout);

@@ -1,5 +1,7 @@
 <template>
-  <div id="accountModal" v-bind:class="{active: active}"></div>
+  <div id="accountModal" v-bind:class="{active: active}">
+    <h2>Account Modal</h2>
+  </div>
 </template>
 
 <script>

@@ -50,6 +50,13 @@
         date
       </div>
     </div>
+
+    <div class="export">
+      <div class="title">Export</div>
+      <div class="csv">CSV</div>
+      <div class="json">JSON</div>
+      <div class="pdf">PDF</div>
+    </div>
   </div>
 </template>
 
@@ -78,7 +85,6 @@ export default {
     orderByOption (option) {
       this.orderBy = option
       var currentQuery = this.$route.query
-      console.log(currentQuery)
 
       this.$router.push({
         query: {
@@ -158,5 +164,25 @@ export default {
       &.active
         .radio
           background: var(--primary)
+
+  .export
+    border: 1px solid var(--stroke)
+    margin-top: 12px
+
+    .title
+      padding: 8px
+
+    .pdf, .json, .csv
+      border: 1px solid var(--stroke)
+      cursor: pointer
+      height: 32px
+      line-height: 32px
+      margin: 4px 12px
+      padding: 0 12px
+      width: calc(100% - 48px)
+
+      &:hover
+        background: var(--primary)
+        color: #FFF
 
 </style>

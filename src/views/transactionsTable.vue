@@ -1,6 +1,8 @@
 <template>
   <div id="transactionsTable">
-    <ul>
+    <span v-if="transactions.length === 0"> No results </span>
+
+    <ul v-if="transactions.length > 0">
       <li class="head">
         <div class="merchant">Merchant</div>
         <div class="amount">Amount</div>
@@ -19,6 +21,7 @@
               <span v-if="transaction.merchant.name !== 'empty'">
                 {{transaction.merchant.name}}
               </span>
+              <span v-else> - </span>
             </div>
             <span v-else=""> - </span>
           </div>
@@ -121,6 +124,7 @@ export default {
   margin-left: 12px
   max-width: calc(100vw - 24px)
   overflow-x: scroll
+  text-align: center
 
   .head
     background: var(--almost-white)
@@ -139,6 +143,7 @@ export default {
     max-height: calc(100vh - 146px)
     overflow-y: scroll
     padding: 0
+    text-align: left
     width: 1023px
 
     li

@@ -1,12 +1,16 @@
 <template>
   <div id="app">
     <div id="navbar">
+      <img class="settings" src="./assets/settings.svg" v-on:click="openModal('settings')">
       <img class="logo" src="./assets/logo.svg">
+      <img class="account" src="./assets/userpiclogo.png" v-on:click="openModal('account')">
     </div>
 
     <div id="topbar">
       <input class="search" v-model="searchQuery" v-on:keyup="search()" placeholder="Search ...">
-      <div class="filters-button"></div>
+      <div class="filters-button">
+        <img src="./assets/filter.svg">
+      </div>
       <filters />
     </div>
 
@@ -60,6 +64,15 @@ export default {
     }
   },
   methods: {
+    openModal (modal) {
+      this.$router.push({
+        query: {
+          orderBy: this.$route.query.orderBy,
+          view: this.$route.query.view,
+          modal: modal
+        }
+      })
+    },
     search () {
       this.$store.commit('search', this.searchQuery)
     }
@@ -116,6 +129,19 @@ html, body
       margin: 12px auto
       width: 104px
 
+    .account
+      cursor: pointer
+      position: absolute
+      right: 12px
+      top: 8px
+      width: 40px
+
+    .settings
+      cursor: pointer
+      left: 12px
+      position: absolute
+      top: 12px
+
   #topbar
     height: 44px
     margin-bottom: 16px
@@ -124,6 +150,7 @@ html, body
     width: 100vw
 
     input.search
+      border: 1px solid var(--stroke)
       box-sizing: border-box
       height: 44px
       left: calc(50vw - 144px)
@@ -133,6 +160,9 @@ html, body
       top: 0
       width: 288px
 
+      &:focus
+        border: 1px solid var(--stroke-darkened)
+
     .filters-button
       border: 1px solid var(--stroke)
       display: inline-block
@@ -141,6 +171,10 @@ html, body
       right: 12px
       top: 0
       width: 44px
+
+      img
+        margin: 12px 11px
+        width: 24px
 
     #filters
       min-height: 44px

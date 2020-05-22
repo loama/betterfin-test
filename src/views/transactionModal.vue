@@ -173,6 +173,7 @@ export default {
 
   .button
     border: 1px solid var(--stroke)
+    cursor: pointer
     height: 44px
     line-height: 44px
     margin: 8px

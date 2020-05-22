@@ -1,5 +1,6 @@
 <template>
   <div id="transactionsList">
+    <span v-if="transactions.length === 0"> No results </span>
     <ul>
       <li v-for="transaction in transactions" v-bind:key="transaction.id" v-on:click="openTransaction(transaction.id)">
         <div class="visual">
@@ -152,6 +153,7 @@ export default {
 
 <style lang="sass" scoped>
 #transactionsList
+  text-align: center
   ul
     height: calc(100vh - 136px)
     list-style: none
@@ -159,6 +161,7 @@ export default {
     max-width: 100vw
     overflow-y: scroll
     padding: 0
+    text-align: left
     width: 500px
 
     li
